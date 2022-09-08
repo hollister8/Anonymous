@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { PostListVo } from "../vo/postListVo";
+import { AiOutlineEye } from "react-icons/ai";
+import { RiChat1Line } from "react-icons/ri";
 
 export default function MyTable({list} : any) {
     const lists : PostListVo[] = list
@@ -8,36 +10,26 @@ export default function MyTable({list} : any) {
     return (
         <table className="main-table">
             <colgroup>
-                <col style={{width: '5%'}}/>
-                <col style={{width: '20%'}}/>
-                <col style={{width: '40%'}}/>
+                <col style={{width: '80%'}}/>
                 <col style={{width: '10%'}}/>
                 <col style={{width: '10%'}}/>
-                <col style={{width: '8%'}}/>
-                <col style={{width: '8%'}}/>
             </colgroup>
             <thead>
-            
                 <tr>
-                    <th>No.</th>
                     <th>글</th>
-                    <th>내용</th>
-                    <th>작성자</th>
-                    <th>날짜</th>
-                    <th>조회수</th>
-                    <th>추천수</th>
+                    <th><AiOutlineEye /></th>
+                    <th><RiChat1Line /></th>
                 </tr>
             </thead>
             <tbody>
                 {lists && lists.map((val) => (
                     <tr>
-                        <td>{val.board_no}</td>
                         <td>{val.board_title}</td>
-                        <td>{val.board_content}</td>
+                        {/* <td>{val.board_content}</td>
                         <td>{val.user_id}</td>
-                        <td>{val.board_regdate.toString()}</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td>{val.board_regdate.toString()}</td> */}
+                        <td><AiOutlineEye />0</td>
+                        <td><RiChat1Line />0</td>
                     </tr>
                 ))}
             </tbody>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { grantAccessToken } from "../store/store";
@@ -8,6 +8,7 @@ export default function Login() {
     let navigate = useNavigate();
     let state = useSelector((state: any) => state.loginInfo )
     let dispatch = useDispatch()
+    const loginBtn = useRef('');
 
     const [inputs, setInputs] = useState({
         userId: '',
@@ -36,6 +37,8 @@ export default function Login() {
             navigate('/')
             const accessToken = response.data.data.accessToken;
             dispatch(grantAccessToken(accessToken))
+        } else {
+            loginBtn.current = '계정 또는 비밀번호가 올바르지 않습니다.'
         }
 
         setInputs({
@@ -48,6 +51,7 @@ export default function Login() {
         <div className="login-wrap">
             <input type="text" placeholder="아이디" name="userId" onChange={onChange} value={userId} required/>
             <input type="password" placeholder="비밀번호" name="password" onChange={onChange} value={password} required/>
+            <div>{loginBtn.current}</div>
             <button onClick={onLogin}>로그인</button>
             
             <label htmlFor="keep"><input type="checkbox" id="keep" name="keep" value="off" />로그인 상태 유지</label>

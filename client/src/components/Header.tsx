@@ -20,7 +20,8 @@ export default function Header() {
     return (
         <div className="main-header">
             <div className="header-item wrap">
-                <StyledLink to="/"><li><img src={Logo}/></li></StyledLink>
+                <StyledLink to="/"><li>ANONY</li></StyledLink>
+                {/* <img src={Logo}/> */}
                 <div></div>
                 <StyledLink to="/"><li>공지사항</li></StyledLink>
                 <StyledLink to="/signIn"><li>회원가입</li></StyledLink>
